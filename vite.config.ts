@@ -3,13 +3,9 @@ import react from "@vitejs/plugin-react";
 import path from "path";
 
 export default defineConfig({
-  base: "./", // important for Vercel static deploy
-  server: {
-    host: "::",
-    port: 8080,
-  },
+  base: "/", // use "/" for Vercel
   build: {
-    outDir: "dist/spa",
+    outDir: "dist", // go back to default
   },
   plugins: [react()],
   resolve: {
