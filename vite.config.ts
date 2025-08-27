@@ -2,15 +2,11 @@ import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import path from "path";
 
-// https://vitejs.dev/config/
 export default defineConfig({
+  base: "./", // important for Vercel static deploy
   server: {
     host: "::",
     port: 8080,
-    fs: {
-      allow: ["./client"], // only your client folder
-      deny: [".env", ".env.*", "*.{crt,pem}", "**/.git/**"],
-    },
   },
   build: {
     outDir: "dist/spa",
@@ -18,7 +14,7 @@ export default defineConfig({
   plugins: [react()],
   resolve: {
     alias: {
-      "@": path.resolve(__dirname, "./client"), // client alias only
+      "@": path.resolve(__dirname, "./client"),
     },
   },
 });
